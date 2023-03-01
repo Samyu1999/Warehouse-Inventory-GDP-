@@ -13,28 +13,46 @@
         android:theme="@style/Theme.WareHouseInventory"
         tools:targetApi="31">
         <activity
-            android:name=".myRequests_Vendor"
+            android:name=".warehouse.WarehousechatActivity"
             android:exported="false" />
         <activity
-            android:name=".VendorProfile"
+            android:name=".warehouse.AllUserActivity"
             android:exported="false" />
         <activity
-            android:name=".Vendor_home"
+            android:name=".vendor.ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".warehouse.WareHouseRequestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".vendor.MyRequestsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".vendor.UserInventoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".warehouse.InventoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".warehouse.CheckinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".warehouse.WarehouseMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".vendor.HomeActivity"
             android:exported="false"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.WareHouseInventory.NoActionBar" />
         <activity
-            android:name=".ForgotPassword"
+            android:name=".vendor.ForgotPassword"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SignUpActivity"
+            android:name=".vendor.SignUpActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -48,17 +66,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
     </application>
 

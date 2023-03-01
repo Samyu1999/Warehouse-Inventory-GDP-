@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "831635565412",
+    "firebase_url": "https://warehouse-inventory-c3dcc-default-rtdb.firebaseio.com",
     "project_id": "warehouse-inventory-c3dcc",
     "storage_bucket": "warehouse-inventory-c3dcc.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "831635565412-tbcbq5420jd7nq0mtuhfdka4cnfkr6te.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.warehouseinventory",
+            "certificate_hash": "e25211117f8f925710e413d57b9b610a6f7413e1"
+          }
+        },
         {
           "client_id": "831635565412-ofp7vnb2ve6bi65l6lru9iltkpkffg02.apps.googleusercontent.com",
           "client_type": 3
