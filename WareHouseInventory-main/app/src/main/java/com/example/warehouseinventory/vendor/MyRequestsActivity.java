@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,14 +57,9 @@ public class MyRequestsActivity extends AppCompatActivity {
             public void onSuccess(QuerySnapshot q) {
                 if(!q.isEmpty()){
                     for(DocumentSnapshot d : q){
-                        fs.collection("Products").document(d.getString("Product ID")).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                            @Override
-                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                names.add(new RequestModel(documentSnapshot.getString("Product Name"),d.getString("Status"),d.getString("Ship Address"),d.getId(),d.getDate("Date")));
-                                exampleListFull.add(new RequestModel(documentSnapshot.getString("Product Name"),d.getString("Status"),d.getString("Ship Address"),d.getId(),d.getDate("Date")));
-                                requestAdapter.notifyDataSetChanged();
-                            }
-                        });
+                        names.add(new RequestModel(d.getString("Status"),d.getString("Ship Address"),d.getId(),d.getDate("Date"), (Map<String, Object>) d.get("Cart"), d.getString("Image")));
+                        exampleListFull.add(new RequestModel(d.getString("Status"),d.getString("Ship Address"),d.getId(),d.getDate("Date"), (Map<String, Object>) d.get("Cart"), d.getString("Image")));
+                        requestAdapter.notifyDataSetChanged();
                     }
                     requestAdapter.notifyDataSetChanged();
                 }
@@ -100,19 +96,23 @@ public class MyRequestsActivity extends AppCompatActivity {
 
             if(names.get(position).getStatus().equals("Pending")){
 
-                final Dialog dialog = new Dialog(MyRequestsActivity.this);dialog.setContentView(R.layout.custom_dialog2);
-                TextView tit = dialog.findViewById(R.id.title);
-                tit.setText(names.get(position).getName());
+                final Dialog dialog = new Dialog(MyRequestsActivity.this);
+                dialog.setContentView(R.layout.custom_dialog2);
                 Button dialogButton =  dialog.findViewById(R.id.remove);
                 dialogButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
+                        if(names.get(position).getStatus().equals("Pending")){
                             fs.collection("Request").document(names.get(position).getRid()).delete();
-                            Toast.makeText(getApplicationContext(),"Request Removed for " + names.get(position),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Request Removed",Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                             finish();
                             startActivity(getIntent());
+                        }else{
+                            Toast.makeText(getApplicationContext(),"Unable to delete Request Started Processing",Toast.LENGTH_SHORT).show();
+
+                        }
 
                     }
                 });
@@ -124,8 +124,6 @@ public class MyRequestsActivity extends AppCompatActivity {
                     }
                 });
                 dialog.show();
-            }else{
-                Toast.makeText(getApplicationContext(),"Product Shipped From Ware House",Toast.LENGTH_SHORT).show();
             }
         });
 

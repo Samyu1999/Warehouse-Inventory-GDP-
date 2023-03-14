@@ -12,21 +12,16 @@ import android.widget.TextView;
 
 import com.example.warehouseinventory.R;
 import com.example.warehouseinventory.vendor.UserInventoryActivity;
-import com.example.warehouseinventory.warehouse.InventoryActivity;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CheckinAdapter extends BaseAdapter  implements Filterable {
+public class userCheckinAdapter extends BaseAdapter  implements Filterable {
     Context context;
     ArrayList<CheckinModel> name;
     LayoutInflater inflter;
 
-    public CheckinAdapter(Context applicationContext, ArrayList<CheckinModel> name) {
+    public userCheckinAdapter(Context applicationContext, ArrayList<CheckinModel> name) {
         this.context = applicationContext;
         this.name = name;
         inflter = (LayoutInflater.from(applicationContext));
@@ -78,11 +73,11 @@ public class CheckinAdapter extends BaseAdapter  implements Filterable {
             ArrayList<CheckinModel> filteredList = new ArrayList<>();
 
             if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(InventoryActivity.exampleListFull);
+                filteredList.addAll(UserInventoryActivity.exampleListFull);
             } else {
-                Log.e("asd", String.valueOf(InventoryActivity.exampleListFull.size()));
+                Log.e("asd", String.valueOf(UserInventoryActivity.exampleListFull.size()));
                 String filterPattern = constraint.toString().toLowerCase().trim();
-                for (CheckinModel item : InventoryActivity.exampleListFull) {
+                for (CheckinModel item : UserInventoryActivity.exampleListFull) {
                     if (item.name.toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }

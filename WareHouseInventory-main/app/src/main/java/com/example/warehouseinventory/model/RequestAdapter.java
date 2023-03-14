@@ -54,7 +54,7 @@ public class RequestAdapter extends BaseAdapter  implements Filterable {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String datess = simpleDateFormat.format(name.get(i).date);
         dates.setText(datess);
-        names.setText( name.get(i).name);
+        names.setText( String.valueOf(name.get(i).products.size()));
         addresss.setText(name.get(i).address);
         statuss.setText(name.get(i).status);
         return view;

@@ -18,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class HomeActivity extends AppCompatActivity {
 
     TextView uid;
-    Button inventory, myreq, chat, signOutBtn;
+    Button inventory, myreq, chat, signOutBtn, cart, profile;
     FirebaseFirestore fstore;
     String uname;
 
@@ -28,10 +28,12 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         uid = findViewById(R.id.uid);
+        profile = findViewById(R.id.profile);
         inventory = findViewById(R.id.inventory);
         myreq = findViewById(R.id.myrequests);
         chat = findViewById(R.id.chat);
         signOutBtn = findViewById(R.id.signOutBtn);
+        cart = findViewById(R.id.cart);
 
         fstore = FirebaseFirestore.getInstance();
 
@@ -45,6 +47,18 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(HomeActivity.this,MyRequestsActivity.class ));
+            }
+        });
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this,CartActivity.class ));
+            }
+        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this,VendorProfile.class ));
             }
         });
         fstore.collection("Vendors").document(FirebaseAuth.getInstance().getCurrentUser().getUid().toString()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {

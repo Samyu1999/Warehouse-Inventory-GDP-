@@ -2,22 +2,25 @@ package com.example.warehouseinventory.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RequestModel {
-    String name;
     String username;
-    String status;
+    String status, image;
     String address;
-    String rid, pid, uid;
+    String rid, uid;
+    Map<String, Object> products;
     Date date;
 
-    public String getName() {
-        return name;
+    public Map<String, Object> getProducts() {
+        return products;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProducts(Map<String, Object> products) {
+        this.products = products;
     }
+
 
     public String getStatus() {
         return status;
@@ -47,13 +50,6 @@ public class RequestModel {
         this.username = username;
     }
 
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid;
-    }
 
     public String getUid() {
         return uid;
@@ -75,21 +71,31 @@ public class RequestModel {
         this.date = date;
     }
 
-    public RequestModel(String name, String status, String address, String rid, Date date) {
-        this.name = name;
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public RequestModel(String status, String address, String rid, Date date, Map<String, Object> products, String image) {
         this.status = status;
         this.address = address;
         this.rid = rid;
+        this.products = products;
+        this.image = image;
         this.date = date;
     }
-    public RequestModel(String name, String status, String address, Date date, String username, String pid, String uid, String rid) {
+    public RequestModel( String status, String address, Date date, String username, String uid, String rid, Map<String, Object> products, String image) {
         this.username = username;
-        this.name = name;
         this.status = status;
         this.address = address;
-        this.pid = pid;
         this.uid = uid;
         this.rid = rid;
+
+        this.image = image;
+        this.products = products;
         this.date = date;
     }
 }

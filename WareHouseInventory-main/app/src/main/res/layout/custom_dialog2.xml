@@ -4,23 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:layout_width="match_parent"
-    android:background="#2C3365"
+    android:layout_width="400dp"
+    android:background="#face2f"
     android:padding="20dp"
     android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
         android:layout_marginBottom="10dp"
         >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remove The Request for "
+            android:text="Remove The Request"
             android:textColor="#000000"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:id="@+id/tit"
             android:textStyle="normal|bold" />
 
@@ -34,8 +35,27 @@
             android:layout_marginStart="5dp"/>
     </LinearLayout>
 
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="end|bottom"
+        android:background="#00FACE2F"
+        android:scaleType="fitXY"
+        android:src="@drawable/outline_file_download_24"
+        android:id="@+id/save"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:id="@+id/img"/>
+</FrameLayout>
 
 <LinearLayout
     android:layout_width="match_parent"

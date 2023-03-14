@@ -1,6 +1,7 @@
 package com.example.warehouseinventory.model;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.example.warehouseinventory.warehouse.WareHouseRequestActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class WarehouseRequestAdapter extends BaseAdapter  implements Filterable {
@@ -52,8 +54,13 @@ public class WarehouseRequestAdapter extends BaseAdapter  implements Filterable 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String datess = simpleDateFormat.format(name.get(i).date);
         dates.setText(datess);
-        names.setText( name.get(i).name);
-        unames.setText( name.get(i).username);
+        String items ="";
+        for (String key : name.get(i).products.keySet()) {
+            String value = String.valueOf(name.get(i).products.get(key));
+            items = items +" "+key + " " + value + " Items, ";
+        }
+        names.setText(items);
+        unames.setText(name.get(i).username);
         addresss.setText(name.get(i).address);
         statuss.setText(name.get(i).status);
         return view;
