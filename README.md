@@ -1,9 +1,9 @@
 # Warehouse-Inventory-GDP-2
 
-##Introduction
+#Introduction
 
 The main objective of a warehouse inventory is to ensure that there is a constant supply of goods or raw materials to meet orders that you have without creating excess inventory. Warehouse inventory is a subset of inventory management and is focused on knowing which products are incoming and outgoing, as well as where each item is located.
-##Scope
+#Scope
 The WIS is responsible for maintaining registered items, their quantities and alarming the manager and admin at lower stock. Moreover, it will be able to have a good check and balance in all branches associated with this system. This system will be a great deal for the owner and his/her customers and worker to perform their jobs in a very efficient way. This will be applicable to all stores having daily life’s needed items; thus it is a generic system.
 #General Description
 ##	Product Perspective
