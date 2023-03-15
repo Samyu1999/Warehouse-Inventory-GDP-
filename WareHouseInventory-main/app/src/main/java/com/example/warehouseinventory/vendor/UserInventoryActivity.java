@@ -83,7 +83,7 @@ public class UserInventoryActivity extends AppCompatActivity {
                             user.put("Product ID", names.get(position).getPid());
                             user.put("Items", address.getText().toString());
                             fs.collection("Cart").document(names.get(position).getPid()).set(user);
-                            Toast.makeText(getApplicationContext(),  names.get(position) + " Added to Cart.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),   " Added to Cart", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                         } else
                             Toast.makeText(getApplicationContext(), "Item has to be Less or Equal then the Quantity", Toast.LENGTH_SHORT).show();

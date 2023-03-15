@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.warehouseinventory.vendor.ForgotPassword;
 import com.example.warehouseinventory.vendor.HomeActivity;
 import com.example.warehouseinventory.vendor.SignUpActivity;
 import com.example.warehouseinventory.warehouse.WarehouseMainActivity;
@@ -48,6 +49,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
+            }
+        });
+        findViewById(R.id.forgetpass).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ForgotPassword.class));
             }
         });
 

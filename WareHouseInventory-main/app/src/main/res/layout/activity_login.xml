@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/yellow1"
+    android:background="@drawable/basetheme"
     tools:context=".LoginActivity">
 
     <TextView
@@ -18,7 +18,9 @@
         android:text="Ware House Inventory"
         android:textColor="@color/white"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+
+        />
 
     <TextView
         android:id="@+id/signin"
@@ -80,7 +82,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="#F3C317"
+        android:backgroundTint="#288087"
         android:text="LOGIN" />
     <TextView
         android:id="@+id/regi"
@@ -92,7 +94,12 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="20dp"
         android:text="Dont Have An Account?"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="20dp"
+
+
+
+        />
 
     <TextView
         android:id="@+id/forgetpass"
@@ -105,7 +112,9 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:text="Forget password?"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        />
 
 
 </RelativeLayout>
