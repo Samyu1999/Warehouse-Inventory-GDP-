@@ -48,12 +48,6 @@ public class CheckinActivity extends AppCompatActivity implements
 
         checkin = findViewById(R.id.checkin);
         cancel = findViewById(R.id.cancel);
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         Spinner spin = (Spinner) findViewById(R.id.spinner);
         spin.setOnItemSelectedListener(this);

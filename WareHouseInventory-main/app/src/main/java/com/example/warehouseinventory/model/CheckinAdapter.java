@@ -47,24 +47,21 @@ public class CheckinAdapter extends BaseAdapter  implements Filterable {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = inflter.inflate(R.layout.custom_item1, null);
+        view = inflter.inflate(R.layout.warehouse_inventory, null);
         TextView cids =  view.findViewById(R.id.cid);
         TextView names =  view.findViewById(R.id.name);
         TextView brands =  view.findViewById(R.id.brand);
         TextView prices =  view.findViewById(R.id.price);
-       // TextView uname =  view.findViewById(R.id.uname);
+        TextView vname =  view.findViewById(R.id.vname);
 
         cids.setText(name.get(i).cid);
         names.setText(name.get(i).name);
         brands.setText(name.get(i).brand);
         prices.setText(name.get(i).quantity);
 
-//        FirebaseFirestore.getInstance().collection("Vendors").document(uid.get(i)).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//            @Override
-//            public void onSuccess(DocumentSnapshot d) {
-//                uname.setText(d.getString("username"));
-//            }
-//        });
+        vname.setText(name.get(i).vendor);
+
+
         return view;
     }
 
@@ -72,6 +69,8 @@ public class CheckinAdapter extends BaseAdapter  implements Filterable {
     public Filter getFilter() {
         return exampleFilter;
     }
+    public Filter getSecondFilter() {return mSecondFilter;}
+    public Filter getThirdFilter() {return mThirdFilter;}
     private Filter exampleFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
@@ -80,10 +79,63 @@ public class CheckinAdapter extends BaseAdapter  implements Filterable {
             if (constraint == null || constraint.length() == 0) {
                 filteredList.addAll(InventoryActivity.exampleListFull);
             } else {
-                Log.e("asd", String.valueOf(InventoryActivity.exampleListFull.size()));
                 String filterPattern = constraint.toString().toLowerCase().trim();
                 for (CheckinModel item : InventoryActivity.exampleListFull) {
                     if (item.name.toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            name.clear();
+            name.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+    private Filter mSecondFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<CheckinModel> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(InventoryActivity.exampleListFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (CheckinModel item : InventoryActivity.exampleListFull) {
+                    if (item.vendor.toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            name.clear();
+            name.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+    private Filter mThirdFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<CheckinModel> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(InventoryActivity.exampleListFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (CheckinModel item : InventoryActivity.exampleListFull) {
+                    if (item.cid.toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }

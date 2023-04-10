@@ -2,7 +2,15 @@ package com.example.warehouseinventory.model;
 
 public class CheckinModel {
 
-    String name, brand, quantity, cid, pid;
+    String name, brand, quantity, cid, pid, vendor;
+
+    public String getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(String vendor) {
+        this.vendor = vendor;
+    }
 
     public String getName() {
         return name;
@@ -44,11 +52,12 @@ public class CheckinModel {
         this.pid = pid;
     }
 
-    public CheckinModel(String name, String brand, String quantity, String cid, String pid) {
+    public CheckinModel(String name, String brand, String quantity, String cid, String pid, String vendor) {
         this.name = name;
         this.brand = brand;
         this.quantity = quantity;
         this.cid = cid;
+        this.vendor = vendor;
         this.pid = pid;
     }
 }

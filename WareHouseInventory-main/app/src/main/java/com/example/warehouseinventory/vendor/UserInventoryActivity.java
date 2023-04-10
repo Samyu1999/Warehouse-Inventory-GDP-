@@ -55,8 +55,8 @@ public class UserInventoryActivity extends AppCompatActivity {
             public void onSuccess(QuerySnapshot q) {
                 if (!q.isEmpty()) {
                     for (DocumentSnapshot d : q) {
-                        names.add(new CheckinModel(d.getString("Product Name"),d.getString("Brand"),d.getString("Quantity"),d.getString("Check ID"),d.getId()));
-                        exampleListFull.add(new CheckinModel(d.getString("Product Name"),d.getString("Brand"),d.getString("Quantity"),d.getString("Check ID"),d.getId()));
+                        names.add(new CheckinModel(d.getString("Product Name"),d.getString("Brand"),d.getString("Quantity"),d.getString("Check ID"),d.getId(),""));
+                        exampleListFull.add(new CheckinModel(d.getString("Product Name"),d.getString("Brand"),d.getString("Quantity"),d.getString("Check ID"),d.getId(),""));
                     }
                     customCheckinAdapter.notifyDataSetChanged();
                 }
@@ -83,7 +83,7 @@ public class UserInventoryActivity extends AppCompatActivity {
                             user.put("Product ID", names.get(position).getPid());
                             user.put("Items", address.getText().toString());
                             fs.collection("Cart").document(names.get(position).getPid()).set(user);
-                            Toast.makeText(getApplicationContext(),   " Added to Cart", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),  names.get(position) + " Added to Cart.", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                         } else
                             Toast.makeText(getApplicationContext(), "Item has to be Less or Equal then the Quantity", Toast.LENGTH_SHORT).show();

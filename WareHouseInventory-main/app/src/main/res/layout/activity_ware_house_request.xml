@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/basetheme"
+    android:background="#face2f"
     tools:context=".warehouse.WareHouseRequestActivity">
 
 
@@ -38,7 +38,7 @@
                 android:layout_marginStart="10dp"
                 android:textSize="12sp"
                 android:layout_marginEnd="5dp"
-                android:backgroundTint="#FFA39F7D"
+                android:backgroundTint="#F3C317"
                 android:text="All" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -48,7 +48,7 @@
                 android:textSize="12sp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
-                android:backgroundTint="#FFA39F7D"
+                android:backgroundTint="#F3C317"
                 android:text="Pending" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/shipped"
@@ -57,7 +57,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
-                android:backgroundTint="#FFA39F7D"
+                android:backgroundTint="#F3C317"
                 android:text="Shipped" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/delivered"
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:textSize="12sp"
-                android:backgroundTint="#FFA39F7D"
+                android:backgroundTint="#F3C317"
                 android:text="Delivered" />
         </LinearLayout>
 

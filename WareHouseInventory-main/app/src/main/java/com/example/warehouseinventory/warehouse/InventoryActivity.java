@@ -35,14 +35,62 @@ public class InventoryActivity extends AppCompatActivity {
     FirebaseFirestore fs;
     CheckinAdapter customCheckinAdapter;
     public static ArrayList<CheckinModel> exampleListFull = new ArrayList<>();
+    Button name, vendor, id;
 
+    boolean bname = true, bid = false, bvendor = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
         SearchView searchView = findViewById(R.id.searchView);
+        name = findViewById(R.id.name);
+        id = findViewById(R.id.id);
+        vendor = findViewById(R.id.vendor);
 
+
+        name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!bname){
+                    name.setBackgroundColor(0xFFAA880F);
+                    id.setBackgroundColor(0xFFface2f);
+                    vendor.setBackgroundColor(0xFFface2f);
+                    bname= true;
+                    bid = false;
+                    bvendor = false;
+                }
+            }
+        });
+
+
+        id.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!bid){
+                    id.setBackgroundColor(0xFFAA880F);
+                    name.setBackgroundColor(0xFFface2f);
+                    vendor.setBackgroundColor(0xFFface2f);
+                    bid = true;
+                    bname = false;
+                    bvendor = false;
+                }
+            }
+        });
+
+        vendor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!bvendor){
+                    vendor.setBackgroundColor(0xFFAA880F);
+                    name.setBackgroundColor(0xFFface2f);
+                    id.setBackgroundColor(0xFFface2f);
+                    bvendor = true;
+                    bname = false;
+                    bid = false;
+                }
+            }
+        });
 
         fs = FirebaseFirestore.getInstance();
 
@@ -53,10 +101,17 @@ public class InventoryActivity extends AppCompatActivity {
             @Override
             public void onSuccess(QuerySnapshot q) {
                     for(DocumentSnapshot d : q){
-                        names.add(new CheckinModel(d.getString("Product Name"),d.getString("Brand"),d.getString("Quantity"),d.getString("Check ID"),d.getId()));
-                        exampleListFull.add(new CheckinModel(d.getString("Product Name"),d.getString("Brand"),d.getString("Quantity"),d.getString("Check ID"),d.getId()));
-                    }
-                    customCheckinAdapter.notifyDataSetChanged();
+                        FirebaseFirestore.getInstance().collection("Vendors").document(d.getString("Vendor")).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot da) {
+                                if(d.exists()){
+                                    names.add(new CheckinModel(d.getString("Product Name"),d.getString("Brand"),d.getString("Quantity"),d.getString("Check ID"),d.getId(),da.getString("username")));
+                                    exampleListFull.add(new CheckinModel(d.getString("Product Name"),d.getString("Brand"),d.getString("Quantity"),d.getString("Check ID"),d.getId(),da.getString("username")));
+                                    customCheckinAdapter.notifyDataSetChanged();
+                                }
+                            }
+                        });
+                        }
             }
         });
         simpleGrid.setAdapter(customCheckinAdapter);
@@ -100,9 +155,19 @@ public class InventoryActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                customCheckinAdapter =new CheckinAdapter(InventoryActivity.this, names);
-                simpleGrid.setAdapter(customCheckinAdapter);
-                customCheckinAdapter.getFilter().filter(newText);
+                if(bvendor){
+                    customCheckinAdapter =new CheckinAdapter(InventoryActivity.this, names);
+                    simpleGrid.setAdapter(customCheckinAdapter);
+                    customCheckinAdapter.getSecondFilter().filter(newText);
+                }else if(bid){
+                    customCheckinAdapter =new CheckinAdapter(InventoryActivity.this, names);
+                    simpleGrid.setAdapter(customCheckinAdapter);
+                    customCheckinAdapter.getThirdFilter().filter(newText);
+                }else {
+                    customCheckinAdapter =new CheckinAdapter(InventoryActivity.this, names);
+                    simpleGrid.setAdapter(customCheckinAdapter);
+                    customCheckinAdapter.getFilter().filter(newText);
+                }
                 return false;
             }
         });

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/basetheme"
+    android:background="#face2f"
     android:layout_height="match_parent"
     tools:context=".vendor.HomeActivity">
 
@@ -11,7 +11,7 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@drawable/basetheme"
+        android:background="#FFC800"
         android:elevation="6dp"
         android:gravity="center"
         android:orientation="vertical">
@@ -24,7 +24,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome "
+        android:text="Hello ! "
         android:textColor="#ffffff"
         android:textStyle="bold"
         android:textSize="32sp" />
@@ -79,7 +79,7 @@
                     android:background="@android:color/transparent"
                     android:text="Inventory"
                     android:textColor="#22BE87"
-                    android:textSize="13dp" />
+                    android:textSize="10dp" />
 
             </androidx.cardview.widget.CardView>
 
@@ -103,7 +103,7 @@
                     android:background="@android:color/transparent"
                     android:text="My Requests"
                     android:textColor="#22BE87"
-                    android:textSize="13sp" />
+                    android:textSize="10sp" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -125,7 +125,7 @@
                     android:background="@android:color/transparent"
                     android:text="Chat"
                     android:textColor="#22BE87"
-                    android:textSize="13sp" />
+                    android:textSize="10sp" />
 
             </androidx.cardview.widget.CardView>
 
@@ -157,7 +157,7 @@
                     android:background="@android:color/transparent"
                     android:text="Profile"
                     android:textColor="#22BE87"
-                    android:textSize="13sp" />
+                    android:textSize="10sp" />
 
             </androidx.cardview.widget.CardView>
 
@@ -188,7 +188,7 @@
                     android:background="@android:color/transparent"
                     android:text="Cart"
                     android:textColor="#22BE87"
-                    android:textSize="13sp" />
+                    android:textSize="10sp" />
 
             </androidx.cardview.widget.CardView>
 
@@ -200,7 +200,7 @@
         android:id="@+id/signOutBtn"
         android:layout_width="211dp"
         android:layout_height="45dp"
-        android:background="#F89C07"
+        android:background="#EDBD0F"
         android:text="Sign Out"
         android:textColor="#22BE87"
         android:textSize="16sp"
