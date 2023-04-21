@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/yellow1"
+    android:background="@drawable/basetheme"
     tools:context=".LoginActivity">
 
     <TextView
@@ -77,11 +77,12 @@
         android:layout_below="@id/password"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="31dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="#F3C317"
+        android:backgroundTint="#635C43"
         android:text="LOGIN" />
+
     <TextView
         android:id="@+id/regi"
         android:layout_width="wrap_content"

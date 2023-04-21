@@ -3,41 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#face2f"
+    android:background="@drawable/basetheme"
     android:layout_height="match_parent"
     tools:context=".vendor.HomeActivity">
+
 
     <LinearLayout
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="#FFC800"
+        android:background="#313938"
         android:elevation="6dp"
         android:gravity="center"
         android:orientation="vertical">
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello ! "
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:textSize="32sp" />
-    <TextView
-        android:id="@+id/uid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="user"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:textSize="32sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello "
+                android:textColor="#ffffff"
+                android:textSize="32sp"
+                android:textStyle="bold" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/uid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="user"
+                android:textColor="#ffffff"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,7 +48,6 @@
             android:textColor="#ffffff"
             android:textSize="16sp" />
     </LinearLayout>
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -200,9 +201,9 @@
         android:id="@+id/signOutBtn"
         android:layout_width="211dp"
         android:layout_height="45dp"
-        android:background="#EDBD0F"
+        android:background="#322E2E"
         android:text="Sign Out"
-        android:textColor="#22BE87"
+        android:textColor="#F5F6F6"
         android:textSize="16sp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

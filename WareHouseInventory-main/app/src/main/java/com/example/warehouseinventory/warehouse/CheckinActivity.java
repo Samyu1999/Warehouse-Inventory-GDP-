@@ -30,7 +30,7 @@ public class CheckinActivity extends AppCompatActivity implements
     ArrayList<String> name = new ArrayList<>();
     ArrayList<String> uid = new ArrayList<>();
     FirebaseFirestore fstore;
-    EditText checkid, pname, price, brand;
+    EditText checkid, tnum, price, brand;
     Integer index;
     Button checkin, cancel;
     ArrayAdapter aa;
@@ -41,13 +41,19 @@ public class CheckinActivity extends AppCompatActivity implements
 
         fstore = FirebaseFirestore.getInstance();
         checkid = findViewById(R.id.checkid);
-        pname = findViewById(R.id.name);
+        tnum = findViewById(R.id.tracking_num);
         price = findViewById(R.id.price);
         brand = findViewById(R.id.brand);
 
 
         checkin = findViewById(R.id.checkin);
         cancel = findViewById(R.id.cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         Spinner spin = (Spinner) findViewById(R.id.spinner);
         spin.setOnItemSelectedListener(this);
@@ -69,14 +75,14 @@ public class CheckinActivity extends AppCompatActivity implements
         checkin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkid.getText().length()==0 || brand.getText().length()==0 || pname.getText().length()==0 || price.getText().length()==0 || index == null){
+                if(checkid.getText().length()==0 || brand.getText().length()==0 || tnum.getText().length()==0 || price.getText().length()==0 || index == null){
                     Toast.makeText(CheckinActivity.this, "All Fields Are Required!!", Toast.LENGTH_SHORT).show();
                 }else if(checkid.length()<6){
                     Toast.makeText(CheckinActivity.this, "Check Id Has to be 6 Character Long!!", Toast.LENGTH_SHORT).show();
                 } else{
                     Map<String, Object> user = new HashMap<>();
                     user.put("Check ID", checkid.getText().toString());
-                    user.put("Product Name", pname.getText().toString());
+                    user.put("Product Name", tnum.getText().toString());
                     user.put("Quantity", price.getText().toString());
                     user.put("Brand", brand.getText().toString());
                     user.put("Vendor", uid.get(index));
@@ -94,7 +100,7 @@ public class CheckinActivity extends AppCompatActivity implements
 
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-        Toast.makeText(getApplicationContext(),name.get(position) , Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),name.get(position) , Toast.LENGTH_SHORT).show();
         index = position;
     }
     @Override

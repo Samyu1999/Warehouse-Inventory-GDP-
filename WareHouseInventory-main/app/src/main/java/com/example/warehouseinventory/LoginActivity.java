@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.warehouseinventory.vendor.ForgotPassword;
 import com.example.warehouseinventory.vendor.HomeActivity;
 import com.example.warehouseinventory.vendor.SignUpActivity;
 import com.example.warehouseinventory.warehouse.WarehouseMainActivity;
@@ -36,6 +38,15 @@ public class LoginActivity extends AppCompatActivity {
         EditText username = findViewById(R.id.email);
         EditText password = findViewById(R.id.password);
         Button regbtn = findViewById(R.id.loginbtn);
+        TextView forgetPass = findViewById(R.id.forgetpass);
+        forgetPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, ForgotPassword.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
         if (fauth.getCurrentUser() != null) {

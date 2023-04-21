@@ -29,7 +29,7 @@
                 android:scaleType="fitXY"
                 android:textAlignment="textEnd"
                 android:textColor="@color/white"
-                android:text="Chech-In ID : "
+                android:text="UPC ID : "
                 android:textSize="12sp"/>
 
             <TextView
